@@ -1,5 +1,5 @@
 # Pico 2 / RP2350 Bitcoin miner — hardware SHA-256
-Optimized dual-core bitcoin miner (firmware) for Pico2 MCU to be used with btcminer-mcu project. Achieves 342kH/s (core-0, hardware SHA-256) + 31kH/s (core-1 software SHA-256). Up to 1.3 Mhash/s on overclocked Pico2. 
+Optimized dual-core bitcoin miner (firmware) for Pico2 MCU to be used with btcminer-mcu project. Achieves 342kH/s (core-0, hardware SHA-256) + 31kH/s (core-1 software SHA-256). Up to 1.3 Mhash/s on overclocked Pico2 (⚠️ needs cooling). 
 
 Real double-SHA256 mining on the RP2350's on-chip SHA-256 accelerator
 (`SHA256_BASE = 0x400f8000`). It validates itself against known answer vectors
@@ -54,8 +54,8 @@ is a clean A/B: same peripheral, same clock, different core driving the bus.
 | `pico2_btc_miner_arm.uf2` | Cortex-M33 | interactive menu | 150 MHz | — |
 | `pico2_btc_miner_riscv_PROTOCOL.uf2` | Hazard3 | protocol | **stock 150 MHz** | 332.6 kH/s |
 | `pico2_btc_miner_arm_PROTOCOL.uf2` | Cortex-M33 | protocol | **stock 150 MHz** | 323.3 kH/s |
-| `pico2_btc_miner_riscv_PROTOCOL_OVERCLOCKED_472MHz_1v50.uf2` | Hazard3 | protocol | 472 MHz @ 1.50 V | 1.047 MH/s |
-| `pico2_btc_miner_arm_PROTOCOL_OVERCLOCKED_472MHz_1v50.uf2` | Cortex-M33 | protocol | 472 MHz @ 1.50 V | 1.017 MH/s |
+| `pico2_btc_miner_riscv_PROTOCOL_OVERCLOCKED_472MHz_1v50.uf2` | Hazard3 | protocol | 472 MHz @ 1.50 V | 1.047 MH/s (⚠️ overclocked, use only if you know what you are doing)|
+| `pico2_btc_miner_arm_PROTOCOL_OVERCLOCKED_472MHz_1v50.uf2` | Cortex-M33 | protocol | 472 MHz @ 1.50 V | 1.017 MH/s (⚠️ overclocked, use only if you know what you are doing)|
 
 The plain `_PROTOCOL` images touch **neither clock nor voltage** — they run at the
 boot default and are safe to leave running indefinitely. The
